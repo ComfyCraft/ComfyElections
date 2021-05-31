@@ -13,11 +13,13 @@ public class ElectionsRootNode extends SubcommandNode<PermissionHolder> {
 		super("elections", null,
 				true,
 				new CreateElectionNode(manager),
-				new ListElectionsNode(manager)
+				new ListElectionsNode(manager),
+				new RegisterForElectionNode(manager),
+				new VoteNode(manager)
 		);
 		this.manager = manager;
 
-		// reflection time! :D
+		// reflection time! :D TODO fix this in squirtgun
 		try {
 			Field helpNodeField = SubcommandNode.class.getDeclaredField("helpNode");
 			helpNodeField.setAccessible(true);

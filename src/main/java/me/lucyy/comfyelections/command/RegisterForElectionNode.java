@@ -53,7 +53,8 @@ public class RegisterForElectionNode implements CommandNode<PermissionHolder> {
 
 		election.addCandidate(player.getUuid());
 
-		return context.getFormat().formatMain("Registered");
+		return context.getFormat().formatMain("Registered for the election ")
+				.append(context.getFormat().formatAccent(election.getTitle()));
 	}
 
 	@Override
@@ -63,6 +64,6 @@ public class RegisterForElectionNode implements CommandNode<PermissionHolder> {
 
 	@Override
 	public String getDescription() {
-		return null;
+		return "Register yourself for an election";
 	}
 }

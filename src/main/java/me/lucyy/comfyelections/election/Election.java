@@ -1,6 +1,8 @@
 package me.lucyy.comfyelections.election;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.function.Function;
@@ -9,7 +11,7 @@ import java.util.stream.Collectors;
 public class Election {
 
 	private final Set<UUID> candidates = new HashSet<>();
-	private final Map<UUID, UUID> votes = new HashMap<>();
+	private final BiMap<UUID, UUID> votes = HashBiMap.create();
 	private final String title;
 	private LocalDateTime finishTime;
 
@@ -25,11 +27,17 @@ public class Election {
 	public void addVote(UUID voter, UUID candidate) {
 		Preconditions.checkArgument(candidates.contains(candidate), "Invalid candidate");
 		Preconditions.checkState(LocalDateTime.now().isBefore(getFinishTime()), "Election has already closed");
-		votes.put(voter, candidate);
+		votes.forcePut(voter, candidate);
 	}
 
 	public void addCandidate(UUID candidate) {
-		// TODO use a multimap?
+		// fixme - potential concurrent access
+		votes.inverse().forEach((c, ignored) -> {
+			if (candidate.equals(c)) {
+				votes.remove(candidate);
+			}
+		});
+		candidates.add(candidate);
 	}
 
 	public Map<UUID, Long> results() {

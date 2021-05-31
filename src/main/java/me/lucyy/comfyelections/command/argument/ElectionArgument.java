@@ -32,8 +32,8 @@ public class ElectionArgument extends AbstractArgument<Election> {
 		String value = args.poll();
 		if (value == null) return null;
 		return manager.getCurrentElections().stream()
-				.filter(x -> x.getTitle().toLowerCase(Locale.ROOT).equals(value.toLowerCase(Locale.ROOT)))
-				.map(Object::toString)
+				.map(Election::getTitle)
+				.filter(title -> title.toLowerCase(Locale.ROOT).startsWith(value.toLowerCase(Locale.ROOT)))
 				.collect(Collectors.toList());
 	}
 }
