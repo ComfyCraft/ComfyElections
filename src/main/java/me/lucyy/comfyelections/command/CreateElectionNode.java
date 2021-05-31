@@ -75,6 +75,6 @@ public class CreateElectionNode implements CommandNode<PermissionHolder> {
 
 	@Override
 	public String getDescription() {
-		return null;
+		return "Creates a new election";
 	}
 }

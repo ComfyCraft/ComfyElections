@@ -47,6 +47,6 @@ public class ListElectionsNode implements CommandNode<PermissionHolder> {
 
 	@Override
 	public String getDescription() {
-		return null;
+		return "Lists all current elections";
 	}
 }
