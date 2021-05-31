@@ -1,28 +1,28 @@
 package me.lucyy.comfyelections.command;
 
-import me.lucyy.comfyelections.Election;
-import me.lucyy.comfyelections.ElectionManager;
+import me.lucyy.comfyelections.election.Election;
+import me.lucyy.comfyelections.election.ElectionManager;
 import me.lucyy.squirtgun.command.context.CommandContext;
 import me.lucyy.squirtgun.command.node.CommandNode;
 import me.lucyy.squirtgun.format.FormatProvider;
 import me.lucyy.squirtgun.format.TextFormatter;
-import me.lucyy.squirtgun.platform.SquirtgunPlayer;
+import me.lucyy.squirtgun.platform.PermissionHolder;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-public class ElectionListNode implements CommandNode<SquirtgunPlayer> {
+public class ListElectionsNode implements CommandNode<PermissionHolder> {
 
 	private final ElectionManager manager;
 
-	public ElectionListNode(ElectionManager manager) {
+	public ListElectionsNode(ElectionManager manager) {
 		this.manager = manager;
 	}
 
 	@Override
-	public @Nullable Component execute(CommandContext<SquirtgunPlayer> context) {
+	public @Nullable Component execute(CommandContext<PermissionHolder> context) {
 		FormatProvider fmt = context.getFormat();
 		Component out = Component.newline()
 				.append(TextFormatter.formatTitle("Current Elections", fmt))
@@ -42,11 +42,11 @@ public class ElectionListNode implements CommandNode<SquirtgunPlayer> {
 
 	@Override
 	public @NotNull String getName() {
-		return "elections";
+		return "list";
 	}
 
 	@Override
 	public String getDescription() {
-		return "Lists all current elections";
+		return null;
 	}
 }

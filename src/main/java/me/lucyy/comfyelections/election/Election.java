@@ -1,4 +1,4 @@
-package me.lucyy.comfyelections;
+package me.lucyy.comfyelections.election;
 
 import com.google.common.base.Preconditions;
 import java.time.LocalDateTime;
@@ -13,8 +13,9 @@ public class Election {
 	private final String title;
 	private LocalDateTime finishTime;
 
-	public Election(String title) {
+	public Election(String title, LocalDateTime finishTime) {
 		this.title = title;
+		this.finishTime = finishTime;
 	}
 
 	public Set<UUID> getCandidates() {
@@ -23,6 +24,7 @@ public class Election {
 
 	public void addVote(UUID voter, UUID candidate) {
 		Preconditions.checkArgument(candidates.contains(candidate), "Invalid candidate");
+		Preconditions.checkState(LocalDateTime.now().isBefore(getFinishTime()), "Election has already closed");
 		votes.put(voter, candidate);
 	}
 

@@ -2,3 +2,7 @@ name: ComfyElections
 version: @version@
 main: me.lucyy.comfyelections.ComfyElections
 api-version: 1.16
+
+commands:
+  elections:
+    description: "yes" # TODO
