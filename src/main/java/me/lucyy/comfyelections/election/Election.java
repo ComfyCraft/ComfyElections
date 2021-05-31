@@ -28,6 +28,10 @@ public class Election {
 		votes.put(voter, candidate);
 	}
 
+	public void addCandidate(UUID candidate) {
+		// TODO use a multimap?
+	}
+
 	public Map<UUID, Long> results() {
 		return votes.keySet().stream()
 				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));

@@ -2,6 +2,7 @@ package me.lucyy.comfyelections.command;
 
 import me.lucyy.comfyelections.election.Election;
 import me.lucyy.comfyelections.election.ElectionManager;
+import me.lucyy.comfyelections.util.DurationFormatter;
 import me.lucyy.squirtgun.command.context.CommandContext;
 import me.lucyy.squirtgun.command.node.CommandNode;
 import me.lucyy.squirtgun.format.FormatProvider;
@@ -33,9 +34,13 @@ public class ListElectionsNode implements CommandNode<PermissionHolder> {
 		for (Election election : manager.getCurrentElections()) {
 			out = out.append(fmt.formatMain(election.getTitle() + " - "))
 					.append(fmt.formatAccent(
-							Duration.between(election.getFinishTime(), now).toString()
-					));
+							DurationFormatter.formatDuration(Duration.between(now, election.getFinishTime()))
+					))
+			.append(Component.newline());
 		}
+
+		out = out.append(Component.newline())
+				.append(TextFormatter.formatTitle("*", fmt));
 
 		return out;
 	}

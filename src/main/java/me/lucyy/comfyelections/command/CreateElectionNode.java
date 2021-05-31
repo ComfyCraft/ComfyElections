@@ -65,7 +65,7 @@ public class CreateElectionNode implements CommandNode<PermissionHolder> {
 				.append(fmt.formatAccent(election.getTitle()))
 				.append(fmt.formatMain(", finishing at "))
 				.append(fmt.formatMain(election.getFinishTime().format(
-						DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))));
+						DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM))));
 	}
 
 	@Override
