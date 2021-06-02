@@ -46,6 +46,11 @@ public class ListElectionsNode implements CommandNode<PermissionHolder> {
 	}
 
 	@Override
+	public @Nullable String getPermission() {
+		return "comfyelections.list";
+	}
+
+	@Override
 	public @NotNull String getName() {
 		return "list";
 	}

@@ -32,6 +32,11 @@ public class RegisterForElectionNode implements CommandNode<PermissionHolder> {
 	}
 
 	@Override
+	public @Nullable String getPermission() {
+		return "comfyelections.register";
+	}
+
+	@Override
 	public @NotNull List<CommandArgument<?>> getArguments() {
 		return List.of(electionArgument);
 	}

@@ -6,3 +6,13 @@ api-version: 1.16
 commands:
   elections:
     description: "yes" # TODO
+
+permissions:
+  comfyelections.create:
+    default: op
+  comfyelections.vote:
+    default: true
+  comfyelections.register:
+    default: true
+  comfyelections.list:
+    default: true

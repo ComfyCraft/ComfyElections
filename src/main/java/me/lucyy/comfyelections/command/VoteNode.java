@@ -24,6 +24,11 @@ public class VoteNode implements CommandNode<PermissionHolder> {
 	}
 
 	@Override
+	public @Nullable String getPermission() {
+		return "comfyelections.vote";
+	}
+
+	@Override
 	public @Nullable Component execute(CommandContext<PermissionHolder> context) {
 		if (!(context.getTarget() instanceof SquirtgunPlayer)) {
 			return context.getFormat().formatMain("The console can't vote.");
