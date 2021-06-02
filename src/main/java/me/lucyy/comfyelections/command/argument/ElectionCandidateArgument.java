@@ -4,6 +4,7 @@ import me.lucyy.comfyelections.election.Election;
 import me.lucyy.comfyelections.election.ElectionCandidate;
 import me.lucyy.comfyelections.election.ElectionManager;
 import me.lucyy.squirtgun.command.argument.AbstractArgument;
+import me.lucyy.squirtgun.command.context.CommandContext;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.jetbrains.annotations.Nullable;
@@ -22,7 +23,7 @@ public class ElectionCandidateArgument extends AbstractArgument<ElectionCandidat
 	}
 
 	@Override
-	public ElectionCandidate getValue(Queue<String> args) {
+	public ElectionCandidate getValue(Queue<String> args, CommandContext<?> ctx) {
 		String electionName = args.poll();
 		if (electionName == null) return null;
 		Election election = manager.getCurrentElections().stream()
@@ -45,7 +46,7 @@ public class ElectionCandidateArgument extends AbstractArgument<ElectionCandidat
 	}
 
 	@Override
-	public @Nullable List<String> tabComplete(Queue<String> args) {
+	public @Nullable List<String> tabComplete(Queue<String> args, CommandContext<?> ctx) {
 		String electionName = args.poll();
 		if (electionName == null) return null;
 		List<String> elections = manager.getCurrentElections().stream()

@@ -1,7 +1,7 @@
 package me.lucyy.comfyelections.command;
 
 import me.lucyy.comfyelections.election.ElectionManager;
-import me.lucyy.squirtgun.command.node.SubcommandNode;
+import me.lucyy.squirtgun.command.node.subcommand.SubcommandNode;
 import me.lucyy.squirtgun.platform.PermissionHolder;
 import java.lang.reflect.Field;
 

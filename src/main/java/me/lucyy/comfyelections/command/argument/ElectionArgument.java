@@ -3,6 +3,7 @@ package me.lucyy.comfyelections.command.argument;
 import me.lucyy.comfyelections.election.Election;
 import me.lucyy.comfyelections.election.ElectionManager;
 import me.lucyy.squirtgun.command.argument.AbstractArgument;
+import me.lucyy.squirtgun.command.context.CommandContext;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Locale;
@@ -19,7 +20,7 @@ public class ElectionArgument extends AbstractArgument<Election> {
 	}
 
 	@Override
-	public Election getValue(Queue<String> args) {
+	public Election getValue(Queue<String> args, CommandContext<?> ctx) {
 		String value = args.poll();
 		if (value == null) return null;
 		return manager.getCurrentElections().stream()
@@ -28,7 +29,7 @@ public class ElectionArgument extends AbstractArgument<Election> {
 	}
 
 	@Override
-	public @Nullable List<String> tabComplete(Queue<String> args) {
+	public @Nullable List<String> tabComplete(Queue<String> args, CommandContext<?> ctx) {
 		String value = args.poll();
 		if (value == null) return null;
 		return manager.getCurrentElections().stream()
