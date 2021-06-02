@@ -11,6 +11,7 @@ import me.lucyy.squirtgun.platform.SquirtgunPlayer;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import java.util.List;
 import java.util.Objects;
 
 public class VoteNode implements CommandNode<PermissionHolder> {
@@ -26,6 +27,11 @@ public class VoteNode implements CommandNode<PermissionHolder> {
 	@Override
 	public @Nullable String getPermission() {
 		return "comfyelections.vote";
+	}
+
+	@Override
+	public @NotNull List<CommandArgument<?>> getArguments() {
+		return List.of(playerArgument);
 	}
 
 	@Override
