@@ -14,14 +14,14 @@ java {
 repositories {
     mavenCentral()
     maven("https://papermc.io/repo/repository/maven-public/")
-    mavenLocal() // TODO remove
 }
 
 dependencies {
-    compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
-    implementation("me.lucyy:squirtgun-api:2.0.0-pre3-SNAPSHOT") // TODO migrate to proper version
-    implementation("me.lucyy:squirtgun-commands:2.0.0-pre3-SNAPSHOT")
-    implementation("me.lucyy:squirtgun-bukkit:2.0.0-pre3-SNAPSHOT")
+    compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT") // TODO update to 17 when available
+    compileOnly("com.google.guava:guava:21.0")
+    implementation("me.lucyy:squirtgun-api:2.0.0-pre4")
+    implementation("me.lucyy:squirtgun-commands:2.0.0-pre4")
+    implementation("me.lucyy:squirtgun-platform-bukkit:2.0.0-pre4")
 }
 
 tasks {

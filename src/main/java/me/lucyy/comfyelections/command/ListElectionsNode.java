@@ -7,7 +7,7 @@ import me.lucyy.squirtgun.command.context.CommandContext;
 import me.lucyy.squirtgun.command.node.CommandNode;
 import me.lucyy.squirtgun.format.FormatProvider;
 import me.lucyy.squirtgun.format.TextFormatter;
-import me.lucyy.squirtgun.platform.PermissionHolder;
+import me.lucyy.squirtgun.platform.audience.PermissionHolder;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -24,7 +24,7 @@ public class ListElectionsNode implements CommandNode<PermissionHolder> {
 
 	@Override
 	public @Nullable Component execute(CommandContext<PermissionHolder> context) {
-		FormatProvider fmt = context.getFormat();
+		final FormatProvider fmt = context.getFormat();
 		Component out = Component.newline()
 				.append(TextFormatter.formatTitle("Current Elections", fmt))
 				.append(Component.newline()).append(Component.newline());
@@ -34,7 +34,7 @@ public class ListElectionsNode implements CommandNode<PermissionHolder> {
 		for (Election election : manager.getCurrentElections()) {
 			out = out.append(fmt.formatMain(election.getTitle() + " - "))
 					.append(fmt.formatAccent(
-							DurationFormatter.formatDuration(Duration.between(now, election.getFinishTime()))
+							DurationFormatter.format(Duration.between(now, election.getFinishTime()))
 					))
 			.append(Component.newline());
 		}

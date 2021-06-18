@@ -1,6 +1,5 @@
 package me.lucyy.comfyelections.election;
 
-import me.lucyy.squirtgun.platform.SquirtgunPlayer;
 import java.util.UUID;
 
 public class ElectionCandidate {

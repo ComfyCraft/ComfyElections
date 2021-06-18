@@ -41,8 +41,12 @@ public class Election {
 	}
 
 	public Map<UUID, Long> results() {
-		return votes.keySet().stream()
+		Map<UUID, Long> collected = votes.keySet().stream()
 				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+		for (UUID candidate : getCandidates()) {
+			collected.putIfAbsent(candidate, 0L);
+		}
+		return collected;
 	}
 
 	public LocalDateTime getFinishTime() {

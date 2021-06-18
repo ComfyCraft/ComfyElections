@@ -7,7 +7,7 @@ import me.lucyy.squirtgun.command.argument.SingleWordArgument;
 import me.lucyy.squirtgun.command.context.CommandContext;
 import me.lucyy.squirtgun.command.node.CommandNode;
 import me.lucyy.squirtgun.format.FormatProvider;
-import me.lucyy.squirtgun.platform.PermissionHolder;
+import me.lucyy.squirtgun.platform.audience.PermissionHolder;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

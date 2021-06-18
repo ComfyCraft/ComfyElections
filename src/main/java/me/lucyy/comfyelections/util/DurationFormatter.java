@@ -3,7 +3,7 @@ package me.lucyy.comfyelections.util;
 import java.time.Duration;
 
 public class DurationFormatter {
-	public static String formatDuration(Duration d) {
+	public static String format(Duration d) {
 		long days = d.toDays();
 		d = d.minusDays(days);
 		long hours = d.toHours();

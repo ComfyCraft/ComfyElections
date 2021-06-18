@@ -5,7 +5,7 @@ api-version: 1.16
 
 commands:
   elections:
-    description: "yes" # TODO
+    description: "Elections plugin for ComfyCraft SMP"
 
 permissions:
   comfyelections.create:
